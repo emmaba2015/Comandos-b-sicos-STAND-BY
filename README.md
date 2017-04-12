@@ -1,1 +1,1 @@
-# Comandos-b-sicos-STAND-BY
+# Comandos-basicos-STAND-BY
