@@ -1,0 +1,7 @@
+  Para chequear el nro maximo de la secuencia aplicada por la stand by
+  
+select max(sequence#) from v$log_history where RESETLOGS_CHANGE# = (select max(RESETLOGS_CHANGE#) from v$log_history);
+
+  Para generar un swith en los redolog
+  
+alter system switch logfile; 
