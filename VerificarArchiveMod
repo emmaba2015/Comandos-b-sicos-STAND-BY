@@ -1,0 +1,23 @@
+
+-- Verificar si la base esta en modo ARCHIVELOG
+
+SELECT LOG_MODE FROM SYS.V$DATABASE;
+
+LOG_MODE
+------------
+NOARCHIVELOG
+
+-- Otra forma es mediante:
+
+SQL> ARCHIVE LOG LIST;
+
+Database log mode              Archive Mode
+Automatic archival             Enabled
+Archive destination            D:\oracle\oradata\IDDB2\archive
+Oldest online log sequence     11160
+Next log sequence to archive   11163
+Current log sequence           11163
+
+Mediante S.O (LINUX-UNIX):
+
+$ ps -ef|grep -i _arc
