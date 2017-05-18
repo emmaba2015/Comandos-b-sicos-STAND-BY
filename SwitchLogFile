@@ -1,0 +1,4 @@
+-- Gernerar un Arhive Log de forma forzada.
+
+alter system switch logfile;
+
