@@ -1,0 +1,26 @@
+-- Como chequeamos si está habilitado el modo ARCHIVELOG?
+
+SQL> archive log list;
+-- Database log mode No Archive Mode
+-- Automatica archival Disabled
+-- Archive destination USE_DB_RECOVERY_FILE_DES
+-- Oldest online log sequence 42541
+-- Current log sequence 42543
+
+-- El "No Archive Mode" evidentemente nos indica que esta base no esta guardando los online archive logs, es decir, 
+   no está en modo ARCHIVELOG.
+
+-- Cómo hacemos para habilitarlo?
+
+sqlplus sys/pass as sysdba -- nos conectamos a la consola de SQLPlus --
+SQL> shutdown immediate; -- si la BD está levantada, la bajamos; de lo contrario obviamos este paso --
+SQL> startup mount; -- montamos la BD --
+SQL> alter database archivelog; -- activamos ARCHIVELOG --
+SQL> alter database open; -- levantamos la BD --
+
+-- Nuestra BD finalmente quedó en modo ARCHIVELOG!
+
+-- Los archivos generados por el archivado de logs, por default, quedarán ubicados en la FRA (Flash Recovery Area).
+
+-- Esta sentencia nos indicará la ubicación de los archive logs y el tamaño asignado para esta área:
+select * from v$parameter where name in ('db_recovery_file_dest','db_recovery_file_dest_size');
