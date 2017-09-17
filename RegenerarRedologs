@@ -1,0 +1,8 @@
+-- Primero vemos los redologs, si detectamos uno invalido lo regeneramos
+select group#,status,member from v$logfile order by group#;
+
+-- Limpio y luego verifico 
+
+ALTER SYSTEM ARCHIVE LOG GROUP 1;
+ALTER DATABASE CLEAR LOGFILE GROUP 1;
+select group#,status,member from v$logfile order by group#;
