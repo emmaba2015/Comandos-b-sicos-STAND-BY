@@ -1,0 +1,7 @@
+-- Select para obtener donde están situados los redos:
+
+select group#, status, member from sys.v$logfile ORDER BY group#
+
+-- Select para obtener el tamaño de los redos y el status:
+
+select group#, bytes/1024/1024 tamano_MB, archived, status, first_change#, first_time from v$log order BY first_change#;
