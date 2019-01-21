@@ -1,0 +1,12 @@
+1--Verifico la configuracion de los arch
+
+ARCHIVE LOG LIST;
+
+2--Modifico la ruto de destino
+ALTER SYSTEM SET log_archive_dest_1='LOCATION=/o2/oradata/PROD/arch';
+
+3--Vuelvo a verificar el cambio realizado
+
+ARCHIVE LOG LIST;
+
+--Fuente: https://www.oracle.com/ocom/groups/public/@otn/documents/webcontent/283256.htm
